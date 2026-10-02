@@ -20,10 +20,6 @@ export function parseMinorUnits(raw: unknown, format: NumberFormat): MinorAmount
   }
   const text = raw.replace(/^[ \t\r\n]+|[ \t\r\n]+$/g, '');
   const { decimal, group } = SEPARATORS[format.locale];
-  const allowed = new Set('0123456789' + decimal + group);
-  if (Array.from(text).some((character) => !allowed.has(character))) {
-    throw new Error('Only ASCII digits and the configured separators are accepted.');
-  }
   const parts = text.split(decimal);
   if (parts.length > 2) {
     throw new Error('More than one decimal separator.');
