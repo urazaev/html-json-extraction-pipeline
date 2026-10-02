@@ -1,5 +1,7 @@
 # HTML + JSON extraction pipeline
 
+[![Check](https://github.com/urazaev/html-json-extraction-pipeline/actions/workflows/check.yml/badge.svg)](https://github.com/urazaev/html-json-extraction-pipeline/actions/workflows/check.yml)
+
 Extract numeric values from two different document shapes through one typed result
 contract. Each field either produces exact integer minor units or a structured failure. A
 missing value does not discard its successful siblings.
