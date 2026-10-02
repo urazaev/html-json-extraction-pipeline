@@ -1,0 +1,26 @@
+{
+  "fields": [
+    {
+      "name": "pagePrice",
+      "source": { "kind": "html", "selector": "[data-item=notebook] .price" },
+      "number": { "locale": "en-US", "scale": 2 }
+    },
+    {
+      "name": "feedPrice",
+      "source": {
+        "kind": "json",
+        "path": [
+          { "key": "items" },
+          { "where": { "key": "code", "equals": "notebook" } },
+          { "key": "price" }
+        ]
+      },
+      "number": { "locale": "de-DE", "scale": 2 }
+    },
+    {
+      "name": "unavailablePrice",
+      "source": { "kind": "html", "selector": "[data-item=eraser] .price" },
+      "number": { "locale": "en-US", "scale": 2 }
+    }
+  ]
+}

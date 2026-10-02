@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "code": "notebook", "price": "1.234,50" },
+    { "code": "pencil", "price": "2,40" }
+  ]
+}
