@@ -1,0 +1,24 @@
+{
+  "name": "html-json-extraction-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local HTML and JSON extraction with explicit numeric contracts and partial results.",
+  "type": "module",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "demo": "node --import tsx src/cli.ts",
+    "check": "npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "cheerio": "1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}
