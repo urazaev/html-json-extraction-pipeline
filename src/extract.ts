@@ -74,8 +74,9 @@ function exactlyOne<T>(matches: T[]): T {
 function htmlValue($: CheerioAPI, selector: string): string {
   let matches;
   try {
-    // Static parsing only: https://cheerio.js.org/docs/basics/selecting/
-    matches = $(selector).toArray();
+    // Query existing nodes; $(string) can also construct nodes from markup.
+    // https://cheerio.js.org/docs/basics/traversing/#find
+    matches = $.root().find(selector).toArray();
   } catch {
     throw new ExtractionError(
       'INVALID_SELECTOR',

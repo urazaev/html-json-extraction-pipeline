@@ -231,3 +231,26 @@ test('identifiers reject trailing line terminators in field names and JSON paths
     }
   }
 });
+
+test('markup-looking selectors cannot fabricate values outside the supplied document', () => {
+  const document = '<p>No price here</p>';
+  for (const selector of ['<span>123.45</span>', '<script>12.30</script>']) {
+    assert.equal(
+      errorCode(extract(htmlSelector(selector), { html: document })),
+      'NO_MATCH',
+    );
+  }
+});
+
+test('query-only selection preserves descendant, root-element and literal attribute selectors', () => {
+  const document =
+    '<html data-price="<retail>"><body><span class="price">12.30</span></body></html>';
+  for (const selector of ['html', 'body > .price', '[data-price="<retail>"]']) {
+    assert.deepEqual(fields(extract(htmlSelector(selector), { html: document }))[0], {
+      name: 'pagePrice',
+      source: 'html',
+      ok: true,
+      value: { minorUnits: 1230, scale: 2 },
+    });
+  }
+});
